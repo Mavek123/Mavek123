@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Leisure - Your Ultimate Vacation Destination</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 5px;
+            background: #1E88E5;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .side-nav:hover, .side-nav.expanded {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        .nav-header, .side-nav ul {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            width: 250px;
+            padding-left: 15px;
+        }
+        .side-nav:hover .nav-header,
+        .side-nav:hover ul,
+        .side-nav.expanded .nav-header,
+        .side-nav.expanded ul {
+            opacity: 1;
+        }
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="index-page">
+    <nav class="side-nav">
+        <div class="nav-header">
+            <h2>Holiday Leisure</h2>
+            <button class="close-menu" aria-label="Close menu">×</button>
+        </div>
+        <ul>
+            <li><a href="Holiday Leisure 1.html" class="active">Home</a></li>
+            <li><a href="gym 1.html">Gym</a></li>
+            <li><a href="swim 1.html">Swim</a></li>
+            <li><a href="sports 1.html">Sport</a></li>
+            <li><a href="group-exercise 1.html">Group Exercise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Holiday Leisure</h1>
+        <p>Your ultimate destination for an active and enjoyable vacation!</p>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2 class="page-header">Welcome to Holiday Leisure</h2>
+            <p>This project is designed as a comprehensive online platform to help users discover and engage in a variety of leisure activities while on holiday.</p>
+            
+            <div class="feature-cards">
+                <div class="card">
+                    <img src="Gym.jpg" alt="Gym Facilities">
+                    <div class="card-content">
+                        <h3>Gym Facilities</h3>
+                        <p>Stay in shape during your holiday with access to our state-of-the-art gym facilities. Whether you're a fitness enthusiast or just looking to maintain your workout routine.</p>
+                        <a href="gym 1.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="Swimming.jpg" alt="Swimming Pool">
+                    <div class="card-content">
+                        <h3>Swimming</h3>
+                        <p>Dive into relaxation and refreshment with our swimming section. Enjoy poolside leisure or take part in aquatic fitness programs.</p>
+                        <a href="swim 1.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="sports-equipment.jpg" alt="Sports Activities">
+                    <div class="card-content">
+                        <h3>Sports</h3>
+                        <p>Explore a wide range of sports and recreational activities to make the most of your holiday. From tennis to beach volleyball.</p>
+                        <a href="sports 1.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="Group Exercise.jpg" alt="Group Exercise">
+                    <div class="card-content">
+                        <h3>Group Exercise</h3>
+                        <p>Join in on group exercise sessions designed for social interaction and fitness fun. Yoga, Zumba, or group cycling classes.</p>
+                        <a href="group-exercise 1.html" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Holiday Leisure by Group Hotspot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelector('.side-nav').addEventListener('click', function(e) {
+            if (e.clientX < 10) this.classList.toggle('expanded');
+        });
+        document.querySelector('.close-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelector('.side-nav').classList.remove('expanded');
+        });
+    </script>
+</body>
+</html>

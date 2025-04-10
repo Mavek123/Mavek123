@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Holiday Leisure</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Vertical Line Menu Styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 5px;
+            background: #1E88E5;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .side-nav:hover,
+        .side-nav.expanded {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-header, 
+        .side-nav ul {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            width: 250px;
+            padding-left: 15px;
+        }
+
+        .side-nav:hover .nav-header,
+        .side-nav:hover ul,
+        .side-nav.expanded .nav-header,
+        .side-nav.expanded ul {
+            opacity: 1;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Adjust content positioning */
+        .container {
+            margin-left: 20px;
+        }
+        
+        /* Hide the menu-toggle button since we're using hover */
+        .menu-toggle {
+            display: none;
+        }
+        
+        /* Make sure overlay doesn't interfere */
+        .overlay {
+            display: none;
+        }
+        
+        /* Team and Gallery Styles */
+        .team-section {
+            margin: 2rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="about-page">
+    <!-- Vertical Line Navigation Menu -->
+    <nav class="side-nav">
+        <div class="nav-header">
+            <h2>Holiday Leisure</h2>
+            <button class="close-menu" aria-label="Close menu">×</button>
+        </div>
+        <ul>
+            <li><a href="Holiday Leisure 1.html">Home</a></li>
+            <li><a href="gym 1.html">Gym</a></li>
+            <li><a href="swim 1.html">Swim</a></li>
+            <li><a href="sports 1.html">Sport</a></li>
+            <li><a href="group-exercise 1.html">Group Exercise</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <header>
+        <h1>Holiday Leisure</h1>
+        <p>Your ultimate destination for an active and enjoyable vacation!</p>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2 class="page-header">About Our Team</h2>
+            <p>Meet the talented individuals behind Holiday Leisure who work tirelessly to create the perfect vacation experience for you.</p>
+            
+            <div class="team-section">
+                <div class="team-grid">
+                    <div class="team-member">
+                        <h3>Fahad Ali</h3>
+                        <p><strong>Group Leader & Program Leader</strong></p>
+                        <p>Responsible for project coordination, practical model development, and functionality testing.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <h3>Izhan</h3>
+                        <p><strong>Design Leader</strong></p>
+                        <p>Creates and improves design concepts, develops prototypes, and ensures excellent user experience.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <h3>Kweku</h3>
+                        <p><strong>Software Tester</strong></p>
+                        <p>Conducts functional and performance testing, identifies bugs, and ensures quality assurance.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <h3>Memmona</h3>
+                        <p><strong>Program Assistant</strong></p>
+                        <p>Manages project timelines, schedules meetings, and organizes team tasks and deadlines.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="page-header" style="margin-top: 3rem;">Our Facility Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="Gym Facilities.jpg" alt="Gym Facility">
+                </div>
+                <div class="gallery-item">
+                    <img src="swimming-pool.jpg" alt="Swimming Pool">
+                </div>
+                <div class="gallery-item">
+                    <img src="asphalt-tennis-court.jpg" alt="Tennis Court">
+                </div>
+                <div class="gallery-item">
+                    <img src="yoga.jpg" alt="Yoga Class">
+                </div>
+                <div class="gallery-item">
+                    <img src="basketball.jpg" alt="Basketball Court">
+                </div>
+                <div class="gallery-item">
+                    <img src="zumba.jpg" alt="Zumba Class">
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Modal for image gallery -->
+    <div class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Holiday Leisure by Group Hotspot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Vertical menu functionality
+        document.querySelector('.side-nav').addEventListener('click', function(e) {
+            // Only toggle if clicking the line itself (left 5px)
+            if (e.clientX < 5) {
+                this.classList.toggle('expanded');
+            }
+        });
+
+        document.querySelector('.close-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelector('.side-nav').classList.remove('expanded');
+        });
+
+        // Image gallery modal functionality
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const modal = document.querySelector('.modal');
+        const modalImg = document.getElementById('modal-image');
+        const closeModal = document.querySelector('.close-modal');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                modal.style.display = 'block';
+                modalImg.src = this.src;
+            });
+        });
+        
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

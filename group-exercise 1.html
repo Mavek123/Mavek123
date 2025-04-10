@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Exercise - Holiday Leisure</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Vertical Line Menu Styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 5px;
+            background: #1E88E5;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .side-nav:hover,
+        .side-nav.expanded {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-header, 
+        .side-nav ul {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            width: 250px;
+            padding-left: 15px;
+        }
+
+        .side-nav:hover .nav-header,
+        .side-nav:hover ul,
+        .side-nav.expanded .nav-header,
+        .side-nav.expanded ul {
+            opacity: 1;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Adjust content positioning */
+        .container {
+            margin-left: 20px;
+        }
+        
+        /* Hide the menu-toggle button since we're using hover */
+        .menu-toggle {
+            display: none;
+        }
+        
+        /* Make sure overlay doesn't interfere */
+        .overlay {
+            display: none;
+        }
+        
+        /* Activity List Styles */
+        .activity-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .activity-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .activity-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #1E88E5;
+        }
+        
+        .activity-content {
+            padding: 1.5rem;
+        }
+        
+        .activity-item h3 {
+            color: #1E88E5;
+            margin-top: 0;
+        }
+        
+        .activity-item p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .activity-item:nth-last-child(1) {
+            grid-column: 1 / -1;
+            background: #f5f9ff;
+            border-left: 4px solid #1E88E5;
+        }
+
+        /* Special styling for pricing card */
+        .pricing-card {
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card .activity-content {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body class="group-exercise-page">
+    <!-- Vertical Line Navigation Menu -->
+    <nav class="side-nav">
+        <div class="nav-header">
+            <h2>Holiday Leisure</h2>
+            <button class="close-menu" aria-label="Close menu">×</button>
+        </div>
+        <ul>
+            <li><a href="Holiday Leisure 1.html">Home</a></li>
+            <li><a href="gym 1.html">Gym</a></li>
+            <li><a href="swim 1.html">Swim</a></li>
+            <li><a href="sports 1.html">Sport</a></li>
+            <li><a href="group-exercise 1.html" class="active">Group Exercise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <header>
+        <h1>Holiday Leisure</h1>
+        <p>Your ultimate destination for an active and enjoyable vacation!</p>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2 class="page-header">Group Exercise Classes</h2>
+            <p>The Group Exercise section offers a variety of fun and engaging fitness classes designed for individuals looking to stay active while socializing and having fun.</p>
+            
+            <div class="activity-list">
+                <div class="activity-item">
+                    <img src="yoga.jpg" alt="Yoga class in progress" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Yoga</h3>
+                        <p>Relax, stretch, and improve your flexibility with our calming yoga sessions, suitable for all levels.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="zumba.jpg" alt="Energetic Zumba class" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Zumba</h3>
+                        <p>Get your heart pumping with high-energy Zumba classes. This dance-inspired workout is a fun way to burn calories.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="pilates-class.jpg" alt="Pilates group session" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Pilates</h3>
+                        <p>Focus on strengthening your core and improving your posture with Pilates.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="cycling-class.jpg" alt="Indoor cycling class" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Cycling</h3>
+                        <p>Join our indoor cycling classes for an intense cardiovascular workout.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="hiit-class.jpg" alt="HIIT group workout" class="activity-image">
+                    <div class="activity-content">
+                        <h3>HIIT</h3>
+                        <p>High-Intensity Interval Training offers short bursts of intense exercise followed by brief rest periods.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="circuit-training.jpg" alt="Circuit training session" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Circuit Training</h3>
+                        <p>This class combines strength and cardio exercises, moving through a series of stations.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item pricing-card">
+                    <img src="group-exercise.jpg" alt="Group exercise session" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Pricing</h3>
+                        <p>Group Exercise Classes: £12 per class</p>
+                        <p>5-Class Package: £50 (save £10)</p>
+                        <p>10-Class Package: £90 (save £30)</p>
+                        <p>Private Group Sessions: £100 per hour (up to 10 people)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p>Booking your class is simple through our website, where you can easily select the time and type of class that fits your schedule.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Holiday Leisure by Group Hotspot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Vertical menu functionality
+        document.querySelector('.side-nav').addEventListener('click', function(e) {
+            // Only toggle if clicking the line itself (left 5px)
+            if (e.clientX < 5) {
+                this.classList.toggle('expanded');
+            }
+        });
+
+        document.querySelector('.close-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelector('.side-nav').classList.remove('expanded');
+        });
+
+        // Close menu when clicking on a link (for mobile)
+        const navLinks = document.querySelectorAll('.side-nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.side-nav').classList.remove('expanded');
+            });
+        });
+    </script>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

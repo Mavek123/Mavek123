@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming - Holiday Leisure</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Vertical Line Menu Styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 5px;
+            background: #1E88E5;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .side-nav:hover,
+        .side-nav.expanded {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-header, 
+        .side-nav ul {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            width: 250px;
+            padding-left: 15px;
+        }
+
+        .side-nav:hover .nav-header,
+        .side-nav:hover ul,
+        .side-nav.expanded .nav-header,
+        .side-nav.expanded ul {
+            opacity: 1;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Adjust content position to account for menu */
+        .container {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body class="swim-page">
+    <!-- Vertical Line Menu -->
+    <nav class="side-nav">
+        <div class="nav-header">
+            <h2>Holiday Leisure</h2>
+            <button class="close-menu" aria-label="Close menu">×</button>
+        </div>
+        <ul>
+            <li><a href="Holiday Leisure 1.html">Home</a></li>
+            <li><a href="gym 1.html">Gym</a></li>
+            <li><a href="swim 1.html" class="active">Swim</a></li>
+            <li><a href="sports 1.html">Sport</a></li>
+            <li><a href="group-exercise 1.html">Group Exercise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <header>
+        <h1>Holiday Leisure</h1>
+        <p>Your ultimate destination for an active and enjoyable vacation!</p>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2 class="page-header">Swimming Facilities</h2>
+            <p>The Swim section offers a relaxing yet invigorating experience with access to both leisure pools and fitness-oriented swimming options.</p>
+            
+            <div class="activity-list">
+                <div class="activity-item">
+                    <h3>Leisure Pool</h3>
+                    <p>Perfect for relaxation with comfortable poolside lounging areas and a refreshing environment.</p>
+                </div>
+                
+                <div class="activity-item">
+                    <h3>Lap Pool</h3>
+                    <p>25-meter lanes for serious swimmers looking to maintain their training regimen.</p>
+                </div>
+                
+                <div class="activity-item">
+                    <h3>Aqua Fitness Classes</h3>
+                    <p>Low-impact, high-energy water workouts suitable for all fitness levels.</p>
+                    <p class="price">£12 per class</p>
+                </div>
+                
+                <div class="activity-item">
+                    <h3>Swimming Lessons</h3>
+                    <p>For beginners or those looking to improve their technique with certified instructors.</p>
+                    <p class="price">£20 per lesson</p>
+                </div>
+            </div>
+            
+            <p>With scheduled swimming sessions and aquatic fitness classes, you can stay refreshed and active throughout your holiday.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Holiday Leisure by Group Hotspot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle menu on click (for mobile)
+        document.querySelector('.side-nav').addEventListener('click', function(e) {
+            // Only toggle if clicking the line itself, not the expanded content
+            if (e.clientX < 10) {
+                this.classList.toggle('expanded');
+            }
+        });
+
+        // Close menu when clicking the close button
+        document.querySelector('.close-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelector('.side-nav').classList.remove('expanded');
+        });
+    </script>
+</body>
+</html>

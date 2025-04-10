@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Facilities - Holiday Leisure</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-backgrounds.css"> 
+    <style>
+        /* Vertical Line Menu Styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 5px;
+            background: #1E88E5;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .side-nav:hover,
+        .side-nav.expanded {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-header, 
+        .side-nav ul {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            width: 250px;
+            padding-left: 15px;
+        }
+
+        .side-nav:hover .nav-header,
+        .side-nav:hover ul,
+        .side-nav.expanded .nav-header,
+        .side-nav.expanded ul {
+            opacity: 1;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="gym-page">
+    <!-- Vertical Line Menu -->
+    <nav class="side-nav">
+        <div class="nav-header">
+            <h2>Holiday Leisure</h2>
+            <button class="close-menu" aria-label="Close menu">×</button>
+        </div>
+        <ul>
+            <li><a href="Holiday Leisure 1.html">Home</a></li>
+            <li><a href="gym 1.html" class="active">Gym</a></li>
+            <li><a href="swim 1.html">Swim</a></li>
+            <li><a href="sports 1.html">Sport</a></li>
+            <li><a href="group-exercise 1.html">Group Exercise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <header>
+        <h1>Holiday Leisure</h1>
+        <p>Your ultimate destination for an active and enjoyable vacation!</p>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2 class="page-header">Gym Facilities</h2>
+            <p>Our Gym section offers a fully equipped fitness center where you can maintain your workout routine while on holiday. Whether you prefer cardio, strength training, or flexibility exercises, we provide a variety of equipment to meet your needs.</p>
+            
+            <div class="activity-list">
+                <div class="activity-item">
+                    <h3>Cardio Equipment</h3>
+                    <p>Treadmills, ellipticals, stationary bikes, and rowing machines for all your cardiovascular needs.</p>
+                </div>
+                
+                <div class="activity-item">
+                    <h3>Strength Training</h3>
+                    <p>Free weights, resistance machines, and functional training equipment for building strength.</p>
+                </div>
+                
+                <div class="activity-item">
+                    <h3>Flexibility Area</h3>
+                    <p>Dedicated space with mats, foam rollers, and stretching equipment for mobility work.</p>
+                </div>
+                
+                <div class="activity-item">
+                    <h3>Personal Training</h3>
+                    <p>Optional personal training sessions available with certified fitness professionals.</p>
+                    <p class="price">£25 per session</p>
+                </div>
+            </div>
+            
+            <div class="booking-form">
+                <h3>Book Gym Time</h3>
+                <form id="gymBookingForm">
+                    <div class="form-group">
+                        <label for="gym-date">Date</label>
+                        <input type="date" id="gym-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gym-time">Time Slot</label>
+                        <select id="gym-time" required>
+                            <option value="">Select a time</option>
+                            <option value="morning">Morning (6am-12pm)</option>
+                            <option value="afternoon">Afternoon (12pm-6pm)</option>
+                            <option value="evening">Evening (6pm-10pm)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="gym-name">Full Name</label>
+                        <input type="text" id="gym-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gym-email">Email</label>
+                        <input type="email" id="gym-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gym-notes">Special Requests</label>
+                        <textarea id="gym-notes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Submit Booking Request</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Holiday Leisure by Group Hotspot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle menu on click (for mobile)
+        document.querySelector('.side-nav').addEventListener('click', function(e) {
+            // Only toggle if clicking the line itself, not the expanded content
+            if (e.clientX < 10) { // 10px threshold from left edge
+                this.classList.toggle('expanded');
+            }
+        });
+
+        // Close menu when clicking the close button
+        document.querySelector('.close-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelector('.side-nav').classList.remove('expanded');
+        });
+
+        // Handle form submission
+        document.getElementById('gymBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your booking request! We will contact you shortly to confirm.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

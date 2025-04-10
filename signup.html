@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Holiday Leisure</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Vertical Line Menu Styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 5px;
+            background: #1E88E5;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .side-nav:hover,
+        .side-nav.expanded {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-header, 
+        .side-nav ul {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            width: 250px;
+            padding-left: 15px;
+        }
+
+        .side-nav:hover .nav-header,
+        .side-nav:hover ul,
+        .side-nav.expanded .nav-header,
+        .side-nav.expanded ul {
+            opacity: 1;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1100;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 900;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            .side-nav {
+                transform: translateX(-100%);
+                width: 280px;
+            }
+            
+            .side-nav.expanded {
+                transform: translateX(0);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .side-nav .nav-header {
+                padding-right: 40px;
+            }
+        }
+
+        /* Rest of your existing styles... */
+        /* Animation Styles for Signup */
+        .auth-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Instagram-style Tab System */
+        .auth-tabs {
+            display: flex;
+            position: relative;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #8e8e8e;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .auth-tab.active {
+            color: #1E88E5;
+        }
+
+        .tab-indicator {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            height: 2px;
+            background: #1E88E5;
+            width: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        /* When signup tab is active */
+        .auth-tabs[data-active-tab="signup"] .tab-indicator {
+            transform: translateX(100%);
+        }
+
+        .auth-form {
+            flex: 1;
+            padding: 3rem;
+            background: white;
+            transform-origin: left;
+            animation: slideInLeft 0.6s ease-out 0.2s both;
+        }
+
+        .auth-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            animation: slideInRight 0.6s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .auth-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .auth-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .auth-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .auth-image:hover .auth-image-overlay {
+            transform: translateY(0);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #1E88E5;
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2);
+            outline: none;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-submit {
+            background: #1E88E5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            background: #1565C0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
+        }
+
+        .auth-links {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .auth-links a {
+            color: #1E88E5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .auth-links a:hover {
+            color: #0D47A1;
+        }
+
+        .auth-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: #1E88E5;
+            transition: width 0.3s ease;
+        }
+
+        .auth-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Password strength indicator */
+        .password-strength {
+            height: 5px;
+            background: #eee;
+            border-radius: 3px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .strength-meter {
+            height: 100%;
+            width: 0;
+            background: #ff5252;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .auth-container {
+                flex-direction: column;
+            }
+            .auth-image {
+                order: -1;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body class="auth-page">
+    <!-- Menu Toggle and Overlay -->
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <div class="overlay"></div>
+    
+    <!-- Vertical Line Navigation Menu -->
+    <nav class="side-nav">
+        <div class="nav-header">
+            <h2>Holiday Leisure</h2>
+            <button class="close-menu" aria-label="Close menu">×</button>
+        </div>
+        <ul>
+            <li><a href="Holiday Leisure 1.html">Home</a></li>
+            <li><a href="gym 1.html">Gym</a></li>
+            <li><a href="swim 1.html">Swim</a></li>
+            <li><a href="sports 1.html">Sport</a></li>
+            <li><a href="group-exercise 1.html">Group Exercise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html" class="active">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <header>
+        <h1>Holiday Leisure</h1>
+        <p>Your ultimate destination for an active and enjoyable vacation!</p>
+    </header>
+    
+    <div class="container">
+        <section class="auth-container" data-active-tab="signup">
+            <!-- Instagram-style Tab System -->
+            <div class="auth-tabs">
+                <button class="auth-tab" data-tab="login">Login</button>
+                <button class="auth-tab active" data-tab="signup">Sign Up</button>
+                <div class="tab-indicator"></div>
+            </div>
+            
+            <div class="auth-form">
+                <h2 class="page-header">Create Account</h2>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                        <div class="password-strength">
+                            <div class="strength-meter" id="strengthMeter"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm">Confirm Password</label>
+                        <input type="password" id="signup-confirm" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="form-submit">Sign Up</button>
+                    </div>
+                    <div class="auth-links">
+                        <p>Already have an account? <a href="login.html">Login here</a></p>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="auth-image">
+                <img src="images/signup.jpg" alt="People enjoying our facilities">
+                <div class="auth-image-overlay">
+                    <h3>Join Our Community!</h3>
+                    <p>Get access to exclusive member benefits and personalized experiences</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Holiday Leisure by Group Hotspot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Vertical menu functionality
+        document.querySelector('.side-nav').addEventListener('click', function(e) {
+            if (e.clientX < 10) this.classList.toggle('expanded');
+        });
+        document.querySelector('.close-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelector('.side-nav').classList.remove('expanded');
+        });
+
+        // Instagram-style Tab Switching
+        const tabs = document.querySelectorAll('.auth-tab');
+        const tabIndicator = document.querySelector('.tab-indicator');
+        const authContainer = document.querySelector('.auth-container');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                document.querySelector('.auth-tab.active').classList.remove('active');
+                tab.classList.add('active');
+                authContainer.setAttribute('data-active-tab', tab.dataset.tab);
+                
+                // Redirect to appropriate page
+                if (tab.dataset.tab === 'login') {
+                    window.location.href = "login.html";
+                }
+                
+                // Animate indicator
+                const tabIndex = Array.from(tabs).indexOf(tab);
+                tabIndicator.style.transform = `translateX(${tabIndex * 100}%)`;
+            });
+        });
+
+        // Password strength indicator
+        const passwordInput = document.getElementById('signup-password');
+        const strengthMeter = document.getElementById('strengthMeter');
+        
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+            
+            // Length check
+            if (password.length > 7) strength += 25;
+            if (password.length > 11) strength += 25;
+            
+            // Complexity checks
+            if (/[A-Z]/.test(password)) strength += 15;
+            if (/[0-9]/.test(password)) strength += 15;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+            
+            // Update meter
+            strengthMeter.style.width = strength + '%';
+            
+            // Update color
+            if (strength < 40) {
+                strengthMeter.style.background = '#ff5252'; // Red
+            } else if (strength < 70) {
+                strengthMeter.style.background = '#ffab40'; // Orange
+            } else {
+                strengthMeter.style.background = '#4CAF50'; // Green
+            }
+        });
+
+        // Form submission animation
+        const signupForm = document.getElementById('signupForm');
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('.form-submit');
+            submitBtn.textContent = 'Creating Account...';
+            submitBtn.style.backgroundColor = '#FF9800';
+            
+            // Simulate signup process
+            setTimeout(() => {
+                submitBtn.textContent = 'Account Created!';
+                submitBtn.style.backgroundColor = '#4CAF50';
+                
+                // Add celebration animation
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.top = '0';
+                confetti.style.left = '0';
+                confetti.style.width = '100%';
+                confetti.style.height = '100%';
+                confetti.style.zIndex = '1000';
+                confetti.style.pointerEvents = 'none';
+                document.body.appendChild(confetti);
+                
+                // Create confetti elements
+                for (let i = 0; i < 50; i++) {
+                    const dot = document.createElement('div');
+                    dot.style.position = 'absolute';
+                    dot.style.width = '10px';
+                    dot.style.height = '10px';
+                    dot.style.backgroundColor = ['#1E88E5', '#4CAF50', '#FFC107', '#FF5722'][Math.floor(Math.random() * 4)];
+                    dot.style.borderRadius = '50%';
+                    dot.style.left = Math.random() * 100 + 'vw';
+                    dot.style.top = '-10px';
+                    dot.style.animation = `fall ${Math.random() * 2 + 1}s linear forwards`;
+                    confetti.appendChild(dot);
+                }
+                
+                // Redirect after celebration
+                setTimeout(() => {
+                    window.location.href = "welcome.html";
+                }, 2000);
+            }, 1500);
+        });
+
+        // Add keyframe animation for confetti
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    
+    <script src="scripts.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

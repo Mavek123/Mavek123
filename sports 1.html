@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports - Holiday Leisure</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Vertical Line Menu Styles */
+        .side-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 5px;
+            background: #1E88E5;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .side-nav:hover,
+        .side-nav.expanded {
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-header, 
+        .side-nav ul {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            width: 250px;
+            padding-left: 15px;
+        }
+
+        .side-nav:hover .nav-header,
+        .side-nav:hover ul,
+        .side-nav.expanded .nav-header,
+        .side-nav.expanded ul {
+            opacity: 1;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Adjust content positioning */
+        .container {
+            margin-left: 20px;
+        }
+        
+        /* Hide the menu-toggle button since we're using hover */
+        .menu-toggle {
+            display: none;
+        }
+        
+        /* Make sure overlay doesn't interfere */
+        .overlay {
+            display: none;
+        }
+        
+        /* Activity List Styles */
+        .activity-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .activity-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .activity-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #1E88E5;
+        }
+        
+        .activity-content {
+            padding: 1.5rem;
+        }
+        
+        .activity-item h3 {
+            color: #1E88E5;
+            margin-top: 0;
+        }
+        
+        .activity-item p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #1E88E5;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body class="sport-page">
+    <!-- Vertical Line Navigation Menu -->
+    <nav class="side-nav">
+        <div class="nav-header">
+            <h2>Holiday Leisure</h2>
+            <button class="close-menu" aria-label="Close menu">×</button>
+        </div>
+        <ul>
+            <li><a href="Holiday Leisure 1.html">Home</a></li>
+            <li><a href="gym 1.html">Gym</a></li>
+            <li><a href="swim 1.html">Swim</a></li>
+            <li><a href="sports 1.html" class="active">Sport</a></li>
+            <li><a href="group-exercise 1.html">Group Exercise</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <header>
+        <h1>Holiday Leisure</h1>
+        <p>Your ultimate destination for an active and enjoyable vacation!</p>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2 class="page-header">Sports Activities</h2>
+            <p>The Sports section of our website provides a wide range of exciting recreational activities that cater to all skill levels and interests.</p>
+            
+            <div class="activity-list">
+                <div class="activity-item">
+                    <img src="tennis-court.jpg" alt="Tennis Court" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Tennis</h3>
+                        <p>Our well-maintained tennis courts are perfect for a friendly match or a more competitive game.</p>
+                        <p class="price">£15 per hour</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="basketball-court.jpg" alt="Basketball Court" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Basketball</h3>
+                        <p>Whether you're shooting hoops casually or organizing a full game with friends.</p>
+                        <p class="price">£15 per hour</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="beach-volleyball.jpg" alt="Beach Volleyball" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Beach Volleyball</h3>
+                        <p>Enjoy the sun and sand with our beach volleyball courts, ideal for both beginners and experienced players.</p>
+                        <p class="price">£10 per session</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="badminton.jpg" alt="Badminton" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Other Sports</h3>
+                        <p>We also offer various other outdoor sports like badminton, table tennis, and mini-golf.</p>
+                        <p class="price">£5-10 per activity</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="sports-equipment.jpg" alt="Sports Equipment" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Equipment Rentals</h3>
+                        <p>We provide all necessary equipment for each activity.</p>
+                        <p class="price">£5 per item</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <img src="tennis-coaching.jpg" alt="Tennis Coaching" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Private Coaching</h3>
+                        <p>Personalized coaching is available for tennis, basketball, and other sports.</p>
+                        <p class="price">£25 per hour</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p>We ensure a smooth booking experience, allowing you to reserve courts and equipment in advance.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Holiday Leisure by Group Hotspot. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Vertical menu functionality
+        document.querySelector('.side-nav').addEventListener('click', function(e) {
+            // Only toggle if clicking the line itself (left 5px)
+            if (e.clientX < 5) {
+                this.classList.toggle('expanded');
+            }
+        });
+
+        document.querySelector('.close-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelector('.side-nav').classList.remove('expanded');
+        });
+
+        // Close menu when clicking on a link (for mobile)
+        const navLinks = document.querySelectorAll('.side-nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.side-nav').classList.remove('expanded');
+            });
+        });
+    </script>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

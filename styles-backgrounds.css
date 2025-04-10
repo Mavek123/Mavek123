@@ -1,0 +1,66 @@
+/* ===== BACKGROUND FIXES ===== */
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    z-index: -1;
+}
+
+.index-page::before {
+    background: linear-gradient(rgba(245,249,255,0.75), rgba(245,249,255,0.75)), 
+                url("bg-main.jpg") center/cover;
+}
+
+.gym-page::before {
+    background: linear-gradient(rgba(245,249,255,0.75), rgba(245,249,255,0.75)), 
+                url("bg-gym.jpg") center/cover;
+}
+
+.swim-page::before {
+    background: linear-gradient(rgba(245,249,255,0.75), rgba(245,249,255,0.75)), 
+                url('bg-pool.jpg') center/cover;
+}
+
+.sport-page::before {
+    background: linear-gradient(rgba(245,249,255,0.75), rgba(245,249,255,0.75)), 
+                url("bg-sports.jpg") center/cover;
+}
+
+.group-exercise-page::before {
+    background: linear-gradient(rgba(245,249,255,0.75), rgba(245,249,255,0.75)), 
+                url('bg-group-exercise.jpg') center/cover;
+}
+
+.about-page::before {
+    background: linear-gradient(rgba(245,249,255,0.75), rgba(245,249,255,0.75)), 
+                url('bg-about.jpg') center/cover;
+}
+
+.auth-page::before {
+    background: linear-gradient(rgba(245,249,255,0.75), rgba(245,249,255,0.75)), 
+                url('bg-auth.jpg') center/cover;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transform: scaleY(-1);
+    -webkit-mask: linear-gradient(to bottom, transparent 10%, rgba(0,0,0,0.7) 50%);
+    mask: linear-gradient(to bottom, transparent 10%, rgba(0,0,0,0.7) 50%);
+    opacity: 0.4;
+    z-index: -1;
+}
